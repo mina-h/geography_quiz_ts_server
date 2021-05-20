@@ -24,10 +24,6 @@ const fetchDataFromAPI = async (continentName) => {
   });
 }
 
-
-
-
-
 module.exports = { 
   fetchDataFromAPI, 
   shuffleArray,
