@@ -10,6 +10,27 @@ const getFiveCountry = (array) => {
   return finalArray;
 }
 
+const createQuestions = (mainArray, countries) => {
+
+  const questions = countries.map(element => {
+    const shuffle = shuffleArray(mainArray);
+    const arrayOfOptions = getFourCapitals(shuffle);
+    return {
+      question: `What is the capital of ${element.name}?`,
+      options: shuffleArray([...arrayOfOptions, element.capital]),
+      currectAnswer: element.capital,
+    }
+  })
+  return questions;
+}
+
+const getFourCapitals = (array) => {
+  console.log(array);
+  const randomCapitals = array.map(element => element.capital);
+  //const shuffled = shuffleArray(randomCapitals);
+  const finalArray = randomCapitals.slice(0, 3);
+  return finalArray;
+}
 
 const fetchDataFromAPI = async (continentName) => {
 
@@ -27,5 +48,7 @@ const fetchDataFromAPI = async (continentName) => {
 module.exports = { 
   fetchDataFromAPI, 
   shuffleArray,
-  getFiveCountry
+  getFiveCountry,
+  createQuestions,
+  getFourCapitals
 };
