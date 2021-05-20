@@ -10,7 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/', async (req, res) => {
-  
+  const { continent } = req.body;
+const data = await fetchDataFromAPI(continent);
+const shuffled = shuffleArray(data);
+const finalArray = getFiveCountry(shuffled);
+console.log(finalArray);
 
 })
 
